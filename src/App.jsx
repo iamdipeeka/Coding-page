@@ -1,12 +1,21 @@
-
+import {BrowserRouter} from "react-router-dom"
+import { Routes,Route } from "react-router-dom"
+import Homescreen from "./screen/homescreen/Index"
+import Playground from "./screen/Playground/Index"
 
 function App() {
   
 
   return (
-    <>
-     <h1>editor</h1>
-    </>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Homescreen/>}/>
+
+      <Route path="/Playground" element={<Playground/>}/>
+
+    </Routes>
+     
+    </BrowserRouter>
   )
 }
 
