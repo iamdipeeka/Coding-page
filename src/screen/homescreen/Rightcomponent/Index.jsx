@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./Index.scss";
 import { PlaygroundContext } from "../../../Providers/PlaygroundProvider";
-import { PlaygroundProvider } from "../../../Providers/PlaygroundProvider";
 
 const Folder = ({ foldertitle, cards }) => {
   return (
@@ -51,7 +50,7 @@ const Folder = ({ foldertitle, cards }) => {
 };
 
 function RightComponent() {
-  const folders = useContext(PlaygroundContext);
+  const {folders} = useContext(PlaygroundContext);
 
   return (
     <div className="right-container">

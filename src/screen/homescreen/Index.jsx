@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./Index.scss"
 import RightComponent from './Rightcomponent/Index'
+import { Modal } from '../../Providers/Modals/Modal'
+import { ModalContext } from '../../Providers/ModalProvider';
 
 
 function Homescreen() {
+  const modalFeatures = useContext(ModalContext);
+  const OpenCreatePlaygroundModal = () =>{
+         modalFeatures.openModal("CREATE_PLAYGROUND");
+  };
   return (
     <div className='home-container'>
       
@@ -13,13 +19,14 @@ function Homescreen() {
         <img src="logoCP.png" />
         <h1>VoiletIDE</h1>
         <h2>Code.Learn.Build.</h2>
-        <button>
+        <button onClick={OpenCreatePlaygroundModal}> 
             <span className='materialicon'>+</span>
             <span>Create Playground</span>
         </button>
         </div>
       </div>
       <RightComponent/>
+      <Modal/>
     </div>
   )
 }

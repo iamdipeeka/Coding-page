@@ -1,0 +1,82 @@
+.modal-container {
+    border: 2px solid rgb(209, 171, 200);
+    ;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(155, 159, 161, 0.3);
+    //  opacity: 0.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-body {
+        position: relative;
+        width: 440px;
+
+        height: 230px;
+        padding: 35px;
+        padding-top: 25px;
+        box-shadow: 3px 4px 9px rgb(156, 43, 88);
+        border-radius: 10px;
+        background-color: whitesmoke;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            gap: 4px;
+            align-items: center;
+
+            button {
+                border: none;
+                font-weight: 500;
+                background-color: rgb(114, 29, 117);
+                padding: 4px;
+                border-radius: 9px;
+                -webkit-border-radius: 9px;
+                -moz-border-radius: 9px;
+                -ms-border-radius: 9px;
+                -o-border-radius: 9px;
+                transition-duration: 0.6s;
+            }
+            button:hover{
+                background-color: rgb(243, 182, 207);
+                box-shadow: 2px 2px 4px rgb(59, 52, 53);
+            }
+
+            input,
+            select {
+                border: none;
+                background-color: rgb(242, 213, 225);
+                padding: 3px;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+            }
+
+            input:focus {
+                outline: none;
+            }
+        }
+
+        .close {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 12px;
+            right: 5px;
+        }
+    }
+}
