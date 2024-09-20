@@ -1,0 +1,39 @@
+.modal-container {
+    .modal-body {
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+           font-family: fantasy;
+        }
+
+        .field {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            input {
+                background-color: rgb(242, 213, 225);
+                border-radius: 6px;
+                padding: 5px;
+                -webkit-border-radius: 6px;
+                -moz-border-radius: 6px;
+                -ms-border-radius: 6px;
+                -o-border-radius: 6px;
+}
+            button{
+                background-color: rgb(114, 29, 117);
+                padding: 5px;
+                border-radius: 6px;
+                -webkit-border-radius: 6px;
+                -moz-border-radius: 6px;
+                -ms-border-radius: 6px;
+                -o-border-radius: 6px;
+                cursor: pointer;
+}
+
+        }
+    }
+}

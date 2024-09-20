@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { v4 } from "uuid";
+import { stringify, v4 } from "uuid";
 
 export const PlaygroundContext = createContext();
 
@@ -50,7 +50,18 @@ const defaultCode = {
 };
 
 export const PlaygroundProvider = ({ children }) => {
-  const [folders, setFolders] = useState(initialData);
+  const [folders, setFolders] = useState(()=>{
+    const localData = localStorage.getItem("data");
+    try{
+      return localData?JSON.parse(localData):initialData
+    } catch(error){
+      return initialData
+    }
+    
+  });
+
+ 
+  
 
   const CreateNewPlayground = (NewPlayground) => {
     const { fileName, folderName, language } = NewPlayground;
@@ -65,6 +76,7 @@ export const PlaygroundProvider = ({ children }) => {
             title: fileName,
             language: language,
             code: defaultCode[language],
+            language
           },
         ],
       },
@@ -73,13 +85,30 @@ export const PlaygroundProvider = ({ children }) => {
     setFolders(newFolders);
   };
 
+  const CreateNewFolder=(folderName)=>{
+       const newFolder={
+        id:v4(),
+        title:folderName,
+        files:[]
+       }
+
+       const allFolders=[...folders,newFolder]
+       folders.push(newFolder)
+       localStorage.setItem('data',JSON.stringify(allFolders))
+       setFolders(allFolders)
+  }
+
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(folders));
+   if (!localStorage.getItem("data")){
+    localStorage.setItem("data", JSON.stringify(newFolders));
+   }
   }, []);
 
   const PlaygroundFeatures = {
     folders,
     CreateNewPlayground,
+    CreateNewFolder,
+
   };
 
   return (

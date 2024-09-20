@@ -3,12 +3,12 @@ import "./Index.scss"
 import RightComponent from './Rightcomponent/Index'
 import { Modal } from '../../Providers/Modals/Modal'
 import { ModalContext } from '../../Providers/ModalProvider';
-
+import { ModalConstants } from '../../Providers/ModalProvider';
 
 function Homescreen() {
   const modalFeatures = useContext(ModalContext);
   const OpenCreatePlaygroundModal = () =>{
-         modalFeatures.openModal("CREATE_PLAYGROUND");
+         modalFeatures.openModal(ModalConstants.CREATE_PLAYGROUND);
   };
   return (
     <div className='home-container'>
