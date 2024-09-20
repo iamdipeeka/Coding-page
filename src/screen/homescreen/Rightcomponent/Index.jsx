@@ -6,7 +6,19 @@ import { ModalContext,ModalConstants } from "../../../Providers/ModalProvider";
 
 
 
-const Folder = ({ foldertitle, cards }) => {
+const Folder = ({ foldertitle, cards,id }) => {
+  const {deleteFolder} = useContext(PlaygroundContext)
+   const {openModal,setModalPayload} = useContext(ModalContext)
+  
+  const onDeleteFolder =()=>{
+     deleteFolder(id)
+  }
+
+  const onEditFolderTitle=()=>{
+    setModalPayload(id)
+     openModal(ModalConstants.UPDATE_FOLDER_TITLE)
+  }
+
   return (
     <div className="folder-container">
       <div className="folder-header">
@@ -17,8 +29,8 @@ const Folder = ({ foldertitle, cards }) => {
           <span>{foldertitle}</span>
         </div>
         <div className="folder-header-item">
-          <span className="material-icons">delete</span>
-          <span className="material-icons">edit</span>
+          <span className="material-icons" onClick={onDeleteFolder}>delete</span>
+          <span className="material-icons" onClick={onEditFolderTitle}>edit</span>
           <button>
             <span className="material-icons">add</span>
             <span>New Playground</span>
@@ -42,8 +54,8 @@ const Folder = ({ foldertitle, cards }) => {
                   cursor: "pointer",
                 }}
               >
-                <span className="material-icons">delete</span>
-                <span className="material-icons">edit</span>
+                <span className="material-icons" onClick={onDeleteFolder}>delete</span>
+                <span className="material-icons" >edit</span>
               </div>
             </div>
           );
@@ -77,6 +89,7 @@ function RightComponent() {
             foldertitle={folder?.title}
             cards={folder?.files}
             key={index}
+            id={folder.id}
           />
         );
       })}
