@@ -19,6 +19,10 @@ const Folder = ({ foldertitle, cards,folderId }) => {
      openModal(ModalConstants.UPDATE_FOLDER_TITLE)
   }
 
+  const openCreateCardModal =()=>{
+    setModalPayload(folderId)
+    openModal(ModalConstants.CREATE_CARD)
+  }
   return (
     <div className="folder-container">
       <div className="folder-header">
@@ -31,7 +35,7 @@ const Folder = ({ foldertitle, cards,folderId }) => {
         <div className="folder-header-item">
           <span className="material-icons" onClick={onDeleteFolder}>delete</span>
           <span className="material-icons" onClick={onEditFolderTitle}>edit</span>
-          <button>
+          <button onClick={openCreateCardModal}>
             <span className="material-icons">add</span>
             <span>New Playground</span>
           </button>
@@ -53,7 +57,7 @@ const Folder = ({ foldertitle, cards,folderId }) => {
               <img src="logoCP.png" alt="" />
               <div className="title-container">
                 <span>{file?.title}</span>
-                <span>Language:{file.language}</span>
+                <span>Language:{file?.language}</span>
               </div>
               <div
                 style={{

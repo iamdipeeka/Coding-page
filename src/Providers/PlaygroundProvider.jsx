@@ -3,6 +3,10 @@ import { stringify, v4 } from "uuid";
 
 export const PlaygroundContext = createContext();
 
+
+
+
+
 const initialData = [
   {
     id: v4(),
@@ -11,7 +15,8 @@ const initialData = [
       {
         id: v4(),
         title: "index",
-        language: "cpp",
+        // language: "cpp",
+        language: "cpp" || "Unknown",
         code: `cout<<"hello";`,
       },
     ],
@@ -23,14 +28,15 @@ const initialData = [
       {
         id: v4(),
         title: "Basics",
-        language: "Python",
+        // language: "Python",
+        language: "python" || "Unknown",
         code: `cout<<"hello";`,
       },
     ],
   },
 ];
 
-const defaultCode = {
+ export const defaultCode = {
   ["cpp"]: `#include <iostream>
             using namespace std;
  
@@ -150,6 +156,18 @@ export const PlaygroundProvider = ({ children }) => {
      setFolders(copiedFolders);
   }
 
+  const createPlayground =(folderId,file) =>{
+    const copiedFolders = [...folders]
+    for(let i=0;i<copiedFolders.length;i++){
+      if(copiedFolders[i].id ===folderId){
+        copiedFolders[i].files.push(file);
+        break;
+      }
+    }
+    localStorage.setItem('data',JSON.stringify(copiedFolders));
+    setFolders(copiedFolders);
+  }
+
   useEffect(() => {
     if (!localStorage.getItem("data")) {
       localStorage.setItem("data", JSON.stringify(folders));
@@ -163,7 +181,8 @@ export const PlaygroundProvider = ({ children }) => {
     deleteFolder,
     editFolderTitle,
     editFileTitle,
-    deleteFile
+    deleteFile,
+    createPlayground
     
     
   };
