@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import "./CreateFolderModal"
+import "./CreateFolderModal.scss"
 import { ModalContext } from '../ModalProvider'
 import { PlaygroundContext } from '../PlaygroundProvider'
 export function UpdateFolderTitleModal() {

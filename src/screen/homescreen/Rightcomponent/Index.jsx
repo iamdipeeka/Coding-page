@@ -6,16 +6,16 @@ import { ModalContext,ModalConstants } from "../../../Providers/ModalProvider";
 
 
 
-const Folder = ({ foldertitle, cards,id }) => {
-  const {deleteFolder} = useContext(PlaygroundContext)
+const Folder = ({ foldertitle, cards,folderId }) => {
+  const {deleteFolder,deleteFile} = useContext(PlaygroundContext)
    const {openModal,setModalPayload} = useContext(ModalContext)
   
   const onDeleteFolder =()=>{
-     deleteFolder(id)
+     deleteFolder(folderId)
   }
 
   const onEditFolderTitle=()=>{
-    setModalPayload(id)
+    setModalPayload(folderId)
      openModal(ModalConstants.UPDATE_FOLDER_TITLE)
   }
 
@@ -39,6 +39,15 @@ const Folder = ({ foldertitle, cards,id }) => {
       </div>
       <div className="card-container">
         {cards?.map((file, index) => {
+           const onEditFile = ()=>{
+               setModalPayload({fileId:file.id,folderId:folderId})
+               openModal(ModalConstants.UPDATE_FILE_TITLE)
+           }
+
+
+           const onDeleteFile = ()=>{
+              deleteFile(folderId,file.id)
+           }
           return (
             <div className="card" key={index}>
               <img src="logoCP.png" alt="" />
@@ -54,8 +63,8 @@ const Folder = ({ foldertitle, cards,id }) => {
                   cursor: "pointer",
                 }}
               >
-                <span className="material-icons" onClick={onDeleteFolder}>delete</span>
-                <span className="material-icons" >edit</span>
+                <span className="material-icons" onClick={onDeleteFile}>delete</span>
+                <span className="material-icons" onClick={onEditFile}>edit</span>
               </div>
             </div>
           );
@@ -89,7 +98,7 @@ function RightComponent() {
             foldertitle={folder?.title}
             cards={folder?.files}
             key={index}
-            id={folder.id}
+            folderId={folder.id}
           />
         );
       })}

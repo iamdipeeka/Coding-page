@@ -4,6 +4,8 @@ import CreatePlaygroundModal from "./CreatePlaygroundModal";
 import { ModalProvider } from "../ModalProvider";
 import CreateFolderModal from "./CreateFolderModal";
 import { UpdateFolderTitleModal } from "./UpdateFolderTitleModal";
+import UpdateFileTitleModal from "./UpdateFileTitleModal";
+
 export const Modal = () => {
   const modalFeatures = useContext(ModalContext);
 
@@ -16,6 +18,7 @@ export const Modal = () => {
         <CreateFolderModal />
       )}
       {modalFeatures.activeModal===ModalConstants.UPDATE_FOLDER_TITLE &&(<UpdateFolderTitleModal/>)}
+      {modalFeatures.activeModal===ModalConstants.UPDATE_FILE_TITLE &&(<UpdateFileTitleModal/>)}
     </>
   );
 };

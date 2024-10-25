@@ -58,10 +58,8 @@ export const PlaygroundProvider = ({ children }) => {
       return initialData;
     }
   });
-  
-  
 
-
+  
 
   const CreateNewPlayground = (NewPlayground) => {
     const { fileName, folderName, language } = NewPlayground;
@@ -108,6 +106,21 @@ export const PlaygroundProvider = ({ children }) => {
     setFolders(updatedFoldersList);
   };
 
+  const deleteFile = (folderId,fileId)=>{
+     const copiedFolders = [...folders]
+     for(let i=0;i<copiedFolders.length;i++){
+      if(copiedFolders[i].id===folderId){
+        const files=[...copiedFolders[i].files]
+        copiedFolders[i].files=files.filter((File)=>{
+          return File.id!==fileId
+        })
+        break
+      }
+     }
+     localStorage.setItem('data',JSON.stringify(copiedFolders))
+     setFolders(copiedFolders)
+  }
+
   const editFolderTitle = (newFolderName, id) => {
    const updatedFoldersList= folders.map((folderItem) => {
       if (folderItem.id === id) {
@@ -118,6 +131,24 @@ export const PlaygroundProvider = ({ children }) => {
     localStorage.setItem('data',JSON.stringify(updatedFoldersList))
     setFolders(updatedFoldersList)
   };
+
+  const editFileTitle = (newFileName,folderId,fileId) =>{
+    const copiedFolders = [...folders];
+     for(let i=0;i<copiedFolders.length;i++){
+      if(folderId===copiedFolders[i].id){
+        const files=copiedFolders[i].files
+        for(let j=0;j<files.length;j++){
+          if(files[j].id===fileId){
+            files[j].title=newFileName;
+            break;
+          }
+        }
+        break
+      }
+     }
+     localStorage.setItem('data',JSON.stringify(copiedFolders));
+     setFolders(copiedFolders);
+  }
 
   useEffect(() => {
     if (!localStorage.getItem("data")) {
@@ -131,6 +162,9 @@ export const PlaygroundProvider = ({ children }) => {
     CreateNewFolder,
     deleteFolder,
     editFolderTitle,
+    editFileTitle,
+    deleteFile
+    
     
   };
 
