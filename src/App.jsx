@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Homescreen/>}/>
 
-      <Route path="/Playground" element={<Playground/>}/>
+      <Route path="/Playground/:fileId/:folderId" element={<Playground/>}/>
 
     </Routes>
      

@@ -1,0 +1,67 @@
+.playground-container{
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .icon-container{
+       
+        display: flex;
+        gap:6px;
+        align-items:center ;
+        padding: 4px;
+    }
+    .content-container{
+        flex-grow: 1;
+        display: grid;
+        gap:10px;
+        padding: 5px;
+        background-color: rgb(250, 162, 207);
+        grid-template-columns: 3fr 2fr ;
+    }
+    .logo{
+        height: 100px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        padding: 3px 0;
+        
+}
+    .header-container{
+        
+        display: flex;
+        justify-content: center;
+        background-color:rgb(71, 13, 71) ;
+        padding: 2px 0;
+    }
+    
+    .input-container{
+        
+        display: flex;
+        flex-direction: column;
+        .input-header{
+            background-color: rgba(175, 129, 175, 0.842);
+            padding:12px ;
+            display: flex;
+            justify-content: space-between;
+            
+}
+        textarea{
+            flex-grow: 1;
+           border: none;
+           background-color: rgb(247, 222, 237);
+           resize: none;
+           padding: 10px;
+           
+        }
+        textarea:focus{
+            outline: none;  
+        }
+    }
+    .editor-container{
+        
+        grid-row:1/3 ;
+    }
+    
+}
