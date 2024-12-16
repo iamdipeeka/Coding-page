@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ModalContext } from '../ModalProvider'
 import { defaultCode, PlaygroundContext } from '../PlaygroundProvider';
-import "./CreatePlaygroundModal.scss"
+import "./createPlaygroundModal.scss"
 import { v4 } from 'uuid';
 
 function CreateCardModal() {
