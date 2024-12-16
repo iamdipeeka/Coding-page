@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import "./EditorContainer.scss";
 import Editor from "@monaco-editor/react";
+
 import "./Index.jsx";
 import { PlaygroundContext } from "../../Providers/PlaygroundProvider.jsx";
 import { makeSubmission } from "./Service.jsx";
@@ -24,7 +25,7 @@ export const EditorContainer = ({ fileId, folderId ,runCode}) => {
     return getDefaultCode(fileId, folderId);
   });
 
-  
+  const [showLoader,setShowLoader]=useState(false)
   const [language, setLanguage] = useState(() => getLanguage(fileId, folderId));
   const [theme, setTheme] = useState("vs-dark");
   const [isFullScreen,setIsFullScreen]=useState(false)
