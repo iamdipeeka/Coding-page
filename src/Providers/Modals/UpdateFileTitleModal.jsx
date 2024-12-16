@@ -2,7 +2,7 @@ import { useContext } from "react"
 import "./CreateFolderModal.scss"
 import { ModalContext } from "../ModalProvider"
 import { PlaygroundContext } from "../PlaygroundProvider";
-import "./createPlaygroundModal.scss"
+
  const UpdateFileTitleModal=()=>{
     const {closeModal,modalPayload} = useContext(ModalContext);
     const {editFileTitle}=useContext(PlaygroundContext)
