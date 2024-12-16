@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./index.scss";
+import "./Index.scss";
 import { EditorContainer } from "./EditorContainer";
 import { makeSubmission } from "./Service";
 function Playground() {
