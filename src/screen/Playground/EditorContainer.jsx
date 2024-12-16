@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import "./EditorContainer.scss";
-import Editor from "@monaco-editor/react";
+import {Editor} from "@monaco-editor/react";
 
 import "./Index.jsx";
 import { PlaygroundContext } from "../../Providers/PlaygroundProvider.jsx";
